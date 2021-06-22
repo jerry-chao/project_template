@@ -1,0 +1,38 @@
+{description, "A Project Structure"}.
+{variables, [
+    {name, "project", "Name of the project"},
+    {desc, "An OTP project", "Short description of the project"},
+    {prj, "t"}
+]}.
+
+%% create project directory
+{dir, "{{name}}"}.
+
+%% makefile
+{template, "project/prj_makefile", "{{name}}/Makefile"}.
+
+%% rebar.config
+{template, "project/rebar.config", "{{name}}/rebar.config"}.
+
+%% overlay vars
+{dir, "{{name}}/config"}.
+{template, "project/prj_local.vars", "{{name}}/config/local.vars"}.
+{template, "project/prj_prod.vars", "{{name}}/config/prod.vars"}.
+{template, "project/prj_test.vars", "{{name}}/config/test.vars"}.
+
+%% vm.args
+{file, "project/prj_vm.args", "{{name}}/config/vm.args"}.
+{template, "project/prj_sys.config", "{{name}}/config/sys.config"}.
+
+%% OTP app
+{dir, "{{name}}/apps/{{name}}/src"}.
+{dir, "{{name}}/apps/{{name}}/include"}.
+{template, "project/app.src", "{{name}}/apps/{{name}}/src/{{name}}.app.src"}.
+{template, "project/prj_app.erl", "{{name}}/apps/{{name}}/src/{{name}}_app.erl"}.
+{template, "project/prj_sup.erl", "{{name}}/apps/{{name}}/src/{{name}}_sup.erl"}.
+{template, "project/app_rebar.config", "{{name}}/apps/{{name}}/rebar.config"}.
+
+{template, "project/gitignore", "{{name}}/.gitignore"}.
+{template, "project/gitattributes", "{{name}}/.gitattributes"}.
+{template, "project/license", "{{name}}/LICENSE"}.
+{template, "project/readme", "{{name}}/README.md"}.

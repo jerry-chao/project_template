@@ -1,0 +1,19 @@
+### {{name}}
+{{desc}}
+
+### Usage
+Add `{{name}}` as a dependency in `rebar.config`
+```erlang
+{deps, [
+	{{{name}}, "<latest release>"}
+	]}.
+```
+
+If not using `hex.pm`
+```erlang
+{deps, [
+	{{{name}}, {git, "https://github.com/{{gh_owner}}/{{name}}.git", {tag, "<latest release>"}}}
+	]}.
+```
+
+### Contributing
